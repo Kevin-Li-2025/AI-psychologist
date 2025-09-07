@@ -6,14 +6,14 @@ An intelligent psychological therapy assistant powered by Tencent's Hunyuan Larg
 
 ### Bilingual Support
 <div align="center">
-  <img src="images/chinese_interface.png" alt="Chinese Interface" width="400"/>
-  <img src="images/english_interface.png" alt="English Interface" width="400"/>
+  <img src="images/chinese_interface.svg" alt="Chinese Interface" width="400"/>
+  <img src="images/english_interface.svg" alt="English Interface" width="400"/>
   <p><em>Full bilingual support - Chinese and English interfaces</em></p>
 </div>
 
 ### Welcome Experience
 <div align="center">
-  <img src="images/welcome_screen.png" alt="Welcome Screen" width="500"/>
+  <img src="images/welcome_screen.svg" alt="Welcome Screen" width="500"/>
   <p><em>Personalized onboarding with avatar selection and therapist style preferences</em></p>
 </div>
 

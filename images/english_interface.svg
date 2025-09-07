@@ -1,0 +1,53 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8e6cf;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#88d8a3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- Glass effect container -->
+  <rect x="50" y="50" width="700" height="500" rx="20" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  
+  <!-- Header -->
+  <rect x="70" y="70" width="660" height="60" rx="10" fill="rgba(255,255,255,0.15)"/>
+  <text x="400" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2d5a3d">Heart Healing Therapist - English Interface</text>
+  
+  <!-- Chat messages container -->
+  <rect x="70" y="150" width="660" height="300" rx="10" fill="rgba(255,255,255,0.1)"/>
+  
+  <!-- AI Message -->
+  <rect x="90" y="170" width="500" height="80" rx="15" fill="rgba(255,255,255,0.25)"/>
+  <text x="110" y="195" font-family="Arial, sans-serif" font-size="14" fill="#2d5a3d">AI Therapist</text>
+  <text x="110" y="215" font-family="Arial, sans-serif" font-size="12" fill="#4a6b5c">Hello! I'm Sophie, and I'm here to provide you with mental health support.</text>
+  <text x="110" y="235" font-family="Arial, sans-serif" font-size="12" fill="#4a6b5c">How are you feeling today?</text>
+  
+  <!-- User Message -->
+  <rect x="210" y="270" width="450" height="60" rx="15" fill="rgba(108,196,144,0.3)"/>
+  <text x="230" y="295" font-family="Arial, sans-serif" font-size="14" fill="#2d5a3d">User</text>
+  <text x="230" y="315" font-family="Arial, sans-serif" font-size="12" fill="#4a6b5c">I'm feeling a bit anxious today, work has been stressful.</text>
+  
+  <!-- Input area -->
+  <rect x="70" y="470" width="660" height="60" rx="10" fill="rgba(255,255,255,0.15)"/>
+  <text x="90" y="495" font-family="Arial, sans-serif" font-size="12" fill="#6b8e7a">Type your message...</text>
+  
+  <!-- Healing tools buttons -->
+  <rect x="90" y="400" width="120" height="30" rx="15" fill="rgba(255,255,255,0.2)"/>
+  <text x="150" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d5a3d">Breathing Exercise</text>
+  
+  <rect x="230" y="400" width="120" height="30" rx="15" fill="rgba(255,255,255,0.2)"/>
+  <text x="290" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d5a3d">Mindful Meditation</text>
+  
+  <rect x="370" y="400" width="120" height="30" rx="15" fill="rgba(255,255,255,0.2)"/>
+  <text x="430" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d5a3d">Emotion Journal</text>
+  
+  <!-- Language toggle -->
+  <rect x="650" y="80" width="80" height="25" rx="12" fill="rgba(255,255,255,0.3)"/>
+  <text x="690" y="97" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d5a3d">EN | 中文</text>
+  
+  <!-- Placeholder text -->
+  <text x="400" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2d5a3d" opacity="0.7">English Interface Screenshot Placeholder</text>
+</svg>
