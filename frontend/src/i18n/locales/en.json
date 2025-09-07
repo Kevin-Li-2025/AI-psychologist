@@ -1,0 +1,181 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "reset": "Reset"
+  },
+  "welcome": {
+    "title": "Mind Healer",
+    "subtitle": "Professional AI Psychological Support",
+    "description": "I'm Sophie, a professional psychological counselor. I will accompany your growth with warmth and professionalism.",
+    "nameLabel": "Please tell me your name",
+    "namePlaceholder": "Enter your name",
+    "avatarLabel": "Choose your avatar",
+    "styleLabel": "Choose your preferred counseling style",
+    "startButton": "Start Conversation",
+    "features": {
+      "privacy": "Completely Confidential",
+      "professional": "Professional Support",
+      "available": "24/7 Online"
+    },
+    "disclaimer": "This service is for support only and cannot replace professional psychotherapy",
+    "therapistStyles": {
+      "gentle": {
+        "name": "Gentle & Caring",
+        "description": "Like a warm friend, listening attentively"
+      },
+      "professional": {
+        "name": "Professional & Rigorous",
+        "description": "Professional psychological guidance"
+      },
+      "encouraging": {
+        "name": "Positive & Encouraging",
+        "description": "A supporter full of positive energy"
+      },
+      "wise": {
+        "name": "Wise Elder",
+        "description": "A sage with rich life experience"
+      }
+    }
+  },
+  "therapy": {
+    "header": {
+      "therapistName": "Sophie",
+      "status": {
+        "online": "Online",
+        "typing": "Typing..."
+      },
+      "actions": {
+        "showTools": "Healing Tools",
+        "hideTools": "Hide Tools",
+        "restart": "Restart"
+      }
+    },
+    "input": {
+      "placeholder": "{{userName}}, share your feelings...",
+      "hint": "Press Enter to send, Shift + Enter for new line"
+    },
+    "message": {
+      "therapistLabel": "AI Therapist",
+      "typingIndicator": "Sophie is thinking..."
+    },
+    "welcomeMessage": "Dear {{userName}}, I'm Sophie, and I'm delighted to meet you at this special moment 🌸\n\nYou know what? Every new encounter is precious to me. I can feel that coming here takes great courage, which itself shows your inner strength.\n\nI want to share a little secret with you — as a psychological counselor, I've also experienced times of confusion and anxiety. It's those experiences that made me understand more deeply that everyone has the magical power of self-healing within.\n\nThis is our warm space where you can be completely yourself and share any feelings. I will accompany you with all my professional knowledge and sincere heart.\n\nNow, tell me, what brought you here? Or we can start with how you're feeling right now 💚",
+    "farewellMessage": "Dear {{userName}}, thank you for being willing to open your heart and share with me today 🌸\n\nEvery bit of your sincerity deeply touches me. Please remember, you are so brave, willing to face your inner feelings, which itself is a beautiful strength.\n\nWhenever you need a gentle listener, I will be here waiting for you. Like the stars in the night sky, although sometimes covered by clouds, they are always there, twinkling with warm light.\n\nMay there always be light in your heart, may gentleness be with you 💚✨",
+    "errorMessage": "Dear {{userName}}, I'm experiencing some small issues right now, just like sometimes our moods have ups and downs. Please give me a moment, or we can take a deep breath first and talk about how you're feeling right now 🌸"
+  },
+  "healing": {
+    "title": "Healing Activities",
+    "subtitle": "Choose an activity to improve your mental state",
+    "dailyTip": {
+      "title": "Today's Mental Health Reminder",
+      "content": "Every small progress deserves celebration. You don't need to be perfect, just be authentically yourself.",
+      "author": "— Mental Health Tip"
+    },
+    "emergency": {
+      "title": "Need Emergency Support?",
+      "description": "If you are experiencing a serious mental health crisis, please seek professional help immediately.",
+      "hotline": "Crisis Hotline: 988",
+      "support": "24/7 Mental Health Support: 988"
+    },
+    "activities": {
+      "breathing": {
+        "title": "Breathing Exercise",
+        "description": "4-7-8 breathing technique for relaxation",
+        "message": "Let's start the 4-7-8 breathing exercise. This is a very effective relaxation technique. Please follow my guidance:",
+        "completeMessage": "Well done! You completed 4 rounds of breathing exercises. How do you feel? This deep breathing can activate the parasympathetic nervous system, helping your body enter a relaxed state.",
+        "phases": {
+          "inhale": "Inhale...",
+          "hold": "Hold your breath...",
+          "exhale": "Exhale..."
+        },
+        "round": "Round {{current}}/{{total}}",
+        "stop": "Stop Exercise"
+      },
+      "gratitude": {
+        "title": "Gratitude Practice",
+        "description": "Share three things you're grateful for",
+        "message": "Let's do a gratitude practice. Please share three things you're grateful for today, no matter how big or small. This practice can help us focus on the positive aspects of life.",
+        "followUp": "Gratitude practice is truly beautiful 🌸 When we look at life with gentle eyes, the flowers in our hearts slowly bloom. {{userName}}, would you like to share something that warms your heart? Even the smallest things are fine."
+      },
+      "mindfulness": {
+        "title": "Mindful Meditation",
+        "description": "5-minute mindfulness guidance",
+        "message": "Let's start a brief mindfulness practice. Please find a comfortable sitting position, close your eyes, and focus on your breathing. Feel the air entering and leaving your body...",
+        "followUp": "Mindfulness is like giving your soul a gentle hug 🫂 Did your heart feel a sense of tranquility during the practice? {{userName}}, did you notice any special feelings or thoughts? Don't worry about right or wrong, just share your authentic experience."
+      },
+      "journaling": {
+        "title": "Emotional Journal",
+        "description": "Record and explore feelings",
+        "message": "Writing an emotional journal is a great way to explore yourself. Please describe how you're feeling right now and what might have caused these feelings."
+      },
+      "affirmations": {
+        "title": "Positive Affirmations",
+        "description": "Build positive self-talk",
+        "message": "Positive self-affirmations can reshape our thought patterns. Let's create some positive affirmation statements that suit you."
+      },
+      "progressive": {
+        "title": "Progressive Relaxation",
+        "description": "Muscle relaxation exercise",
+        "message": "Progressive muscle relaxation can help release physical tension. Let's start from the head and gradually relax all muscle groups throughout the body..."
+      }
+    },
+    "moods": {
+      "happy": {
+        "label": "Happy",
+        "message": "I'm glad to see you're in a good mood! Let's talk about what makes you feel happy."
+      },
+      "sad": {
+        "label": "Sad",
+        "message": "I understand you might be feeling sad right now. This feeling is completely normal, let's explore it together."
+      },
+      "anxious": {
+        "label": "Anxious",
+        "message": "Anxiety doesn't feel good. Let me help you find some ways to relieve anxiety."
+      },
+      "angry": {
+        "label": "Angry",
+        "message": "Anger is a strong emotion. Let's talk about what triggered this feeling."
+      },
+      "tired": {
+        "label": "Tired",
+        "message": "Feeling tired is a signal that your body and mind need rest. Let's talk about how to better take care of yourself."
+      },
+      "confused": {
+        "label": "Confused",
+        "message": "Facing confusion is part of growth. Let me help you sort out your thoughts."
+      }
+    },
+    "followUps": {
+      "mood": "Dear {{userName}}, thank you for being willing to share your feelings with me 💚 Every emotion is precious, they all tell us about our inner voice. Whether happy or sad, they are all authentic parts of you. Would you like to talk about what touched your heart? I will listen gently.",
+      "breathing": "Well done! {{userName}} 🌱 Deep breathing is like injecting fresh energy into the soul. This gentle technique can accompany you anytime, just like me. How do your body and mood feel now? Do you feel some relaxation?",
+      "default": "This is truly a beautiful moment of self-care ✨ {{userName}}, would you like to share your experience just now? Your feelings are all important to me, I want to better understand and accompany you."
+    }
+  },
+  "emotions": {
+    "sad": "😔 Sad",
+    "happy": "😊 Happy",
+    "anxious": "😰 Anxious",
+    "angry": "😠 Angry",
+    "confused": "🤔 Confused",
+    "calm": "😌 Calm",
+    "neutral": "😐 Neutral"
+  },
+  "quickResponses": [
+    "I feel anxious",
+    "I need to talk",
+    "I feel lonely",
+    "I want to relax",
+    "I need advice"
+  ]
+}

@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from '../hooks/useTranslation';
 import './TherapyInput.css';
 
 const TherapyInput = ({ onSendMessage, disabled, userName }) => {
+    const { t } = useTranslation();
     const [message, setMessage] = useState('');
     const [isFocused, setIsFocused] = useState(false);
     const textareaRef = useRef(null);
@@ -55,7 +57,7 @@ const TherapyInput = ({ onSendMessage, disabled, userName }) => {
                         onKeyPress={handleKeyPress}
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
-                        placeholder={`${userName}，分享你的感受...`}
+                        placeholder={t('therapy.input.placeholder', { userName })}
                         disabled={disabled}
                         className="message-input"
                         rows="1"
@@ -80,7 +82,7 @@ const TherapyInput = ({ onSendMessage, disabled, userName }) => {
                 </div>
                 
                 <div className="input-hint">
-                    按 Enter 发送，Shift + Enter 换行
+                    {t('therapy.input.hint')}
                 </div>
             </form>
         </div>

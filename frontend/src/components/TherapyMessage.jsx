@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from '../hooks/useTranslation';
 import './TherapyMessage.css';
 
 const TherapyMessage = ({ message, isTyping, userName, userAvatar }) => {
+    const { t } = useTranslation();
     const [displayedContent, setDisplayedContent] = useState('');
     const [isAnimating, setIsAnimating] = useState(false);
 
@@ -82,7 +84,7 @@ const TherapyMessage = ({ message, isTyping, userName, userAvatar }) => {
                         <div className="message-glass">
                             {message.role === 'assistant' && (
                                 <div className="message-header">
-                                    <span className="therapist-name">AI治疗师</span>
+                                    <span className="therapist-name">{t('therapy.message.therapistLabel')}</span>
                                     <span className="message-time">{formatTime(message.timestamp)}</span>
                                 </div>
                             )}

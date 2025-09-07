@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from '../hooks/useTranslation';
 import './WelcomeScreen.css';
 
 const WelcomeScreen = ({ onStartSession }) => {
+    const { t, language, changeLanguage, availableLanguages } = useTranslation();
     const [name, setName] = useState('');
     const [selectedAvatar, setSelectedAvatar] = useState('👤');
     const [selectedTherapistStyle, setSelectedTherapistStyle] = useState('gentle');
@@ -19,26 +21,26 @@ const WelcomeScreen = ({ onStartSession }) => {
     const therapistStyles = [
         {
             id: 'gentle',
-            name: '温柔细腻',
-            description: '像温暖的朋友，细心倾听',
+            name: t('welcome.therapistStyles.gentle.name'),
+            description: t('welcome.therapistStyles.gentle.description'),
             emoji: '🌸'
         },
         {
             id: 'professional',
-            name: '专业严谨',
-            description: '专业的心理学指导',
+            name: t('welcome.therapistStyles.professional.name'),
+            description: t('welcome.therapistStyles.professional.description'),
             emoji: '🧠'
         },
         {
             id: 'encouraging',
-            name: '积极鼓励',
-            description: '充满正能量的支持者',
+            name: t('welcome.therapistStyles.encouraging.name'),
+            description: t('welcome.therapistStyles.encouraging.description'),
             emoji: '🌟'
         },
         {
             id: 'wise',
-            name: '智慧长者',
-            description: '人生阅历丰富的智者',
+            name: t('welcome.therapistStyles.wise.name'),
+            description: t('welcome.therapistStyles.wise.description'),
             emoji: '🦉'
         }
     ];
@@ -98,18 +100,30 @@ const WelcomeScreen = ({ onStartSession }) => {
         <div className="welcome-screen">
             <div className="welcome-container">
                 <div className="welcome-content">
+                    {/* 语言切换 */}
+                    <div className="language-selector">
+                        {availableLanguages.map((lang) => (
+                            <button
+                                key={lang.code}
+                                className={`language-btn ${language === lang.code ? 'active' : ''}`}
+                                onClick={() => changeLanguage(lang.code)}
+                            >
+                                {lang.nativeName}
+                            </button>
+                        ))}
+                    </div>
+
                     {/* Logo */}
                     <div className="logo-section">
                         <div className="logo-icon">👩‍⚕️</div>
-                        <h1 className="app-title">心灵治愈师</h1>
-                        <p className="app-subtitle">专业AI心理支持</p>
+                        <h1 className="app-title">{t('welcome.title')}</h1>
+                        <p className="app-subtitle">{t('welcome.subtitle')}</p>
                     </div>
 
                     {/* 简介 */}
                     <div className="intro-section">
                         <p className="intro-text">
-                            我是苏心怡，一名专业的心理咨询师。<br/>
-                            我会用温暖和专业陪伴你的每一步成长。
+                            {t('welcome.description')}
                         </p>
                     </div>
 
@@ -118,14 +132,14 @@ const WelcomeScreen = ({ onStartSession }) => {
                         {/* 姓名输入 */}
                         <div className="input-group">
                             <label htmlFor="name" className="input-label">
-                                请告诉我你的名字
+                                {t('welcome.nameLabel')}
                             </label>
                             <input
                                 type="text"
                                 id="name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                placeholder="输入你的名字"
+                                placeholder={t('welcome.namePlaceholder')}
                                 className="name-input"
                                 maxLength={20}
                                 required
@@ -135,7 +149,7 @@ const WelcomeScreen = ({ onStartSession }) => {
                         {/* 头像选择 */}
                         <div className="input-group">
                             <label className="input-label">
-                                选择你的头像
+                                {t('welcome.avatarLabel')}
                             </label>
                             <div className="avatar-grid">
                                 {avatarOptions.map((avatar, index) => (
@@ -154,7 +168,7 @@ const WelcomeScreen = ({ onStartSession }) => {
                         {/* AI风格选择 */}
                         <div className="input-group">
                             <label className="input-label">
-                                选择你喜欢的咨询师风格
+                                {t('welcome.styleLabel')}
                             </label>
                             <div className="style-grid">
                                 {therapistStyles.map((style) => (
@@ -179,21 +193,21 @@ const WelcomeScreen = ({ onStartSession }) => {
                             disabled={!name.trim()}
                             className="start-button"
                         >
-                            开始对话
+                            {t('welcome.startButton')}
                         </button>
                     </form>
 
                     {/* 简单特性 */}
                     <div className="features-simple">
-                        <span className="feature">🔒 完全保密</span>
-                        <span className="feature">💚 专业支持</span>
-                        <span className="feature">🌟 24/7在线</span>
+                        <span className="feature">🔒 {t('welcome.features.privacy')}</span>
+                        <span className="feature">💚 {t('welcome.features.professional')}</span>
+                        <span className="feature">🌟 {t('welcome.features.available')}</span>
                     </div>
 
                     {/* 免责声明 */}
                     <div className="disclaimer-simple">
                         <small>
-                            此服务仅供支持，不能替代专业心理治疗
+                            {t('welcome.disclaimer')}
                         </small>
                     </div>
                 </div>

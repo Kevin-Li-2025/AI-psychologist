@@ -6,9 +6,11 @@ import HealingFeatures from './HealingFeatures';
 import { callHunyuanAPI, formatMessage } from '../services/hunyuanApi';
 import { ragService } from '../services/ragService';
 import { generateGentleSystemPrompt } from '../services/systemPrompts';
+import { useTranslation } from '../hooks/useTranslation';
 import './TherapyInterface.css';
 
 const TherapyInterface = () => {
+    const { t, language, changeLanguage, availableLanguages } = useTranslation();
     const [messages, setMessages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isTyping, setIsTyping] = useState(false);
@@ -22,6 +24,7 @@ const TherapyInterface = () => {
     const [currentEmotion, setCurrentEmotion] = useState('neutral');
     const [userId, setUserId] = useState(null);
     const messagesEndRef = useRef(null);
+    const isProcessingRef = useRef(false);
 
     // 自动滚动到底部
     const scrollToBottom = () => {
@@ -68,7 +71,7 @@ const TherapyInterface = () => {
         
         const welcomeMessage = {
             role: 'assistant',
-            content: `亲爱的${actualName}，我是苏心怡，很高兴能够与你相遇在这个特殊的时刻 🌸\n\n你知道吗？每一次新的相遇对我来说都是珍贵的。我能感受到你来到这里需要很大的勇气，这本身就说明了你内心的力量。\n\n我想和你分享一个小秘密 —— 作为一名心理咨询师，我也曾经历过迷茫和不安的时光。正是那些经历让我更深刻地理解，每个人的内心都有着自我愈合的神奇力量。\n\n这里是属于我们的温暖空间，你可以完全做自己，分享任何感受。我会用我全部的专业知识和真诚的心陪伴你。\n\n现在，告诉我，是什么带你来到这里的呢？或者，我们可以先从你此刻的感受开始 💚`,
+            content: t('therapy.welcomeMessage', { userName: actualName }),
             timestamp: new Date().toISOString(),
             id: 'therapy-welcome',
             therapyType: 'welcome'
@@ -115,20 +118,13 @@ const TherapyInterface = () => {
 
     // 获取情绪显示文本
     const getEmotionDisplay = (emotion) => {
-        const emotionMap = {
-            sad: '😔 难过',
-            happy: '😊 开心', 
-            anxious: '😰 焦虑',
-            angry: '😠 愤怒',
-            confused: '🤔 困惑',
-            calm: '😌 平静',
-            neutral: '😐 平静'
-        };
-        return emotionMap[emotion] || '😐 平静';
+        return t(`emotions.${emotion}`) || t('emotions.neutral');
     };
 
     const handleSendMessage = async (content) => {
-        if (!content.trim() || !sessionId) return;
+        if (!content.trim() || !sessionId || isLoading || isProcessingRef.current) return;
+        
+        isProcessingRef.current = true;
 
         // 简单的情绪检测
         const emotionData = detectEmotion(content);
@@ -136,7 +132,6 @@ const TherapyInterface = () => {
 
         // 添加用户消息
         const userMessage = formatMessage(content, 'user');
-        setMessages(prev => [...prev, userMessage]);
         
         // 将用户消息添加到RAG记忆中
         ragService.addMessage(sessionId, userMessage);
@@ -144,6 +139,8 @@ const TherapyInterface = () => {
         setIsLoading(true);
 
         try {
+            // 先添加用户消息到界面
+            setMessages(prev => [...prev, userMessage]);
             setIsTyping(true);
 
             // 获取增强的上下文信息
@@ -160,14 +157,14 @@ const TherapyInterface = () => {
                 )
             };
 
-            // 准备消息历史（只取最近6条对话，保持上下文简洁）
+            // 使用当前messages状态加上新的用户消息来构建请求
+            const currentMessages = [...messages, userMessage];
             const recentMessages = [
                 systemPrompt,
-                ...messages.slice(-6).map(msg => ({
+                ...currentMessages.slice(-6).map(msg => ({
                     role: msg.role,
                     content: msg.content
-                })),
-                { role: 'user', content: content }
+                }))
             ];
 
             // 调用API，使用更高的温度值让回应更温柔自然
@@ -198,12 +195,13 @@ const TherapyInterface = () => {
             setIsTyping(false);
 
             const errorMessage = formatMessage(
-                `亲爱的${userName}，我现在遇到了一些小问题，就像有时候我们的心情也会有起伏一样。请给我一点时间，或者我们可以先深呼吸一下，聊聊你现在的感受 🌸`,
+                t('therapy.errorMessage', { userName }),
                 'assistant'
             );
             setMessages(prev => [...prev, errorMessage]);
         } finally {
             setIsLoading(false);
+            isProcessingRef.current = false;
         }
     };
 
@@ -262,7 +260,7 @@ const TherapyInterface = () => {
     const endSession = () => {
         const farewellMessage = {
             role: 'assistant',
-            content: `亲爱的${userName}，谢谢你今天愿意打开心扉与我分享 🌸\n\n你的每一份真诚都深深触动着我。请记住，你是如此勇敢，愿意面对内心的感受，这本身就是一种美丽的力量。\n\n无论何时，当你需要一个温柔的倾听者，我都会在这里等你。就像夜空中的星星，虽然有时被云朵遮挡，但它们始终在那里闪烁着温暖的光芒。\n\n愿你的心中永远有光，愿温柔与你同在 💚✨`,
+            content: t('therapy.farewellMessage', { userName }),
             timestamp: new Date().toISOString(),
             id: 'session-end',
             therapyType: 'farewell'
@@ -305,19 +303,33 @@ const TherapyInterface = () => {
                             <span className="avatar-emoji">👩‍⚕️</span>
                         </div>
                         <div className="info-text">
-                            <h1 className="therapist-name">苏心怡</h1>
+                            <h1 className="therapist-name">{t('therapy.header.therapistName')}</h1>
                             <span className="status-text">
-                                {isTyping ? '正在回复...' : '在线'}
+                                {isTyping ? t('therapy.header.status.typing') : t('therapy.header.status.online')}
                             </span>
                         </div>
                     </div>
                     
                     <div className="header-actions">
+                        {/* 语言切换 */}
+                        <div className="language-selector-header">
+                            {availableLanguages.map((lang) => (
+                                <button
+                                    key={lang.code}
+                                    className={`language-btn-header ${language === lang.code ? 'active' : ''}`}
+                                    onClick={() => changeLanguage(lang.code)}
+                                    title={lang.name}
+                                >
+                                    {lang.code.toUpperCase()}
+                                </button>
+                            ))}
+                        </div>
+                        
                         <button onClick={() => setShowFeatures(!showFeatures)} className="action-btn">
-                            {showFeatures ? '隐藏工具' : '治愈工具'}
+                            {showFeatures ? t('therapy.header.actions.hideTools') : t('therapy.header.actions.showTools')}
                         </button>
                         <button onClick={resetSession} className="action-btn secondary">
-                            重新开始
+                            {t('therapy.header.actions.restart')}
                         </button>
                     </div>
                 </div>
@@ -342,7 +354,7 @@ const TherapyInterface = () => {
                                 <span></span>
                                 <span></span>
                             </div>
-                            <span className="typing-text">苏心怡正在思考...</span>
+                            <span className="typing-text">{t('therapy.message.typingIndicator')}</span>
                         </div>
                     )}
                     <div ref={messagesEndRef} />

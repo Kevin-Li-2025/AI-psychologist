@@ -154,12 +154,50 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
+/* 消息玻璃容器 */
+.message-glass {
+    position: relative;
+}
+
+/* 消息头部 */
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.therapist-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.3px;
+}
+
+.message-time {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}
+
+/* 消息底部 */
+.message-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* 消息文本 */
 .message-text {
     margin: 0;
     color: inherit;
     font-size: inherit;
     line-height: inherit;
+    position: relative;
 }
 
 .message-text p {
@@ -168,6 +206,26 @@
 
 .message-text p:last-child {
     margin-bottom: 0;
+}
+
+.message-text p.empty-line {
+    margin: 6px 0;
+    height: 6px;
+}
+
+/* 打字光标 */
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background: rgba(255, 255, 255, 0.8);
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
 }
 
 /* 消息时间戳 */
@@ -404,6 +462,62 @@
 .therapy-message * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* 消息装饰效果 */
+.message-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.healing-particles {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float 4s ease-in-out infinite;
+}
+
+.particle-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.particle-2 {
+    top: 60%;
+    right: 15%;
+    animation-delay: 1.5s;
+}
+
+.particle-3 {
+    bottom: 30%;
+    left: 20%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0px) scale(0.8);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-10px) scale(1);
+    }
 }
 
 /* 高级光效 */

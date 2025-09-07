@@ -23,16 +23,20 @@ export const callHunyuanAPI = async (messages, options = {}) => {
 
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.error || `API 请求失败: ${response.status} ${response.statusText}`);
+            const errorMessage = errorData.error || errorData.message || `API 请求失败: ${response.status} ${response.statusText}`;
+            throw new Error(errorMessage);
         }
 
         const data = await response.json();
 
+        // 处理后端返回的数据结构 {success: true, data: {...}}
+        const responseData = data.success ? data.data : data;
+
         return {
-            content: data.content,
-            role: data.role,
-            usage: data.usage,
-            timestamp: data.timestamp
+            content: responseData.content,
+            role: responseData.role,
+            usage: responseData.usage,
+            timestamp: responseData.timestamp
         };
     } catch (error) {
         console.error('API 调用错误:', error);

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from '../hooks/useTranslation';
 import './HealingFeatures.css';
 
 const HealingFeatures = ({ onFeatureSelect, userName }) => {
+    const { t } = useTranslation();
     const [selectedMood, setSelectedMood] = useState(null);
     const [breathingActive, setBreathingActive] = useState(false);
     const [breathingCount, setBreathingCount] = useState(0);
@@ -9,12 +11,12 @@ const HealingFeatures = ({ onFeatureSelect, userName }) => {
 
     // 情绪选项
     const moodOptions = [
-        { emoji: '😊', label: '开心', color: '#4caf50', message: '很高兴看到你心情不错！让我们聊聊是什么让你感到开心的。' },
-        { emoji: '😔', label: '难过', color: '#2196f3', message: '我理解你现在可能感到难过。这种感受是完全正常的，让我们一起探讨一下。' },
-        { emoji: '😰', label: '焦虑', color: '#ff9800', message: '焦虑的感觉确实不好受。让我帮你找到一些缓解焦虑的方法。' },
-        { emoji: '😡', label: '愤怒', color: '#f44336', message: '愤怒是一种强烈的情绪。让我们谈谈是什么触发了这种感受。' },
-        { emoji: '😴', label: '疲惫', color: '#9c27b0', message: '感到疲惫是身心需要休息的信号。让我们聊聊如何更好地照顾自己。' },
-        { emoji: '🤔', label: '困惑', color: '#607d8b', message: '面对困惑是成长的一部分。让我帮你理清思路。' }
+        { emoji: '😊', key: 'happy', color: '#4caf50' },
+        { emoji: '😔', key: 'sad', color: '#2196f3' },
+        { emoji: '😰', key: 'anxious', color: '#ff9800' },
+        { emoji: '😡', key: 'angry', color: '#f44336' },
+        { emoji: '😴', key: 'tired', color: '#9c27b0' },
+        { emoji: '🤔', key: 'confused', color: '#607d8b' }
     ];
 
     // 治疗活动选项
@@ -22,44 +24,44 @@ const HealingFeatures = ({ onFeatureSelect, userName }) => {
         {
             id: 'breathing',
             icon: '🫁',
-            title: '呼吸练习',
-            description: '4-7-8呼吸法帮助放松',
+            title: t('healing.activities.breathing.title'),
+            description: t('healing.activities.breathing.description'),
             action: () => startBreathingExercise()
         },
         {
             id: 'gratitude',
             icon: '🙏',
-            title: '感恩练习',
-            description: '分享三件感恩的事',
-            action: () => onFeatureSelect('gratitude', '让我们做一个感恩练习。请分享三件你今天感恩的事情，无论大小。这个练习可以帮助我们关注生活中的积极面。')
+            title: t('healing.activities.gratitude.title'),
+            description: t('healing.activities.gratitude.description'),
+            action: () => onFeatureSelect('gratitude', t('healing.activities.gratitude.message'))
         },
         {
             id: 'mindfulness',
             icon: '🧘',
-            title: '正念冥想',
-            description: '5分钟正念引导',
-            action: () => onFeatureSelect('mindfulness', '让我们开始一个简短的正念练习。请找一个舒适的姿势坐好，闭上眼睛，专注于你的呼吸。感受空气进入和离开你的身体...')
+            title: t('healing.activities.mindfulness.title'),
+            description: t('healing.activities.mindfulness.description'),
+            action: () => onFeatureSelect('mindfulness', t('healing.activities.mindfulness.message'))
         },
         {
             id: 'journaling',
             icon: '📝',
-            title: '情绪日记',
-            description: '记录和探索感受',
-            action: () => onFeatureSelect('journaling', '写情绪日记是一个很好的自我探索方式。请描述一下你现在的感受，以及可能导致这种感受的原因。')
+            title: t('healing.activities.journaling.title'),
+            description: t('healing.activities.journaling.description'),
+            action: () => onFeatureSelect('journaling', t('healing.activities.journaling.message'))
         },
         {
             id: 'affirmations',
             icon: '💪',
-            title: '积极肯定',
-            description: '建立正面自我对话',
-            action: () => onFeatureSelect('affirmations', '积极的自我肯定可以重塑我们的思维模式。让我们一起创造一些适合你的积极肯定语句。')
+            title: t('healing.activities.affirmations.title'),
+            description: t('healing.activities.affirmations.description'),
+            action: () => onFeatureSelect('affirmations', t('healing.activities.affirmations.message'))
         },
         {
             id: 'progressive',
             icon: '🌊',
-            title: '渐进放松',
-            description: '肌肉放松练习',
-            action: () => onFeatureSelect('progressive', '渐进式肌肉放松可以帮助释放身体紧张。让我们从头部开始，逐步放松全身的肌肉群...')
+            title: t('healing.activities.progressive.title'),
+            description: t('healing.activities.progressive.description'),
+            action: () => onFeatureSelect('progressive', t('healing.activities.progressive.message'))
         }
     ];
 
@@ -69,7 +71,7 @@ const HealingFeatures = ({ onFeatureSelect, userName }) => {
         setBreathingCount(0);
         setBreathingPhase('inhale');
         
-        onFeatureSelect('breathing', '让我们开始4-7-8呼吸练习。这是一个非常有效的放松技巧。请跟随我的指导：');
+        onFeatureSelect('breathing', t('healing.activities.breathing.message'));
     };
 
     // 呼吸练习逻辑
@@ -89,7 +91,7 @@ const HealingFeatures = ({ onFeatureSelect, userName }) => {
                 setBreathingCount(prev => prev + 1);
                 if (breathingCount >= 3) {
                     setBreathingActive(false);
-                    onFeatureSelect('breathing-complete', '很好！你完成了4轮呼吸练习。感觉如何？这种深度呼吸可以激活副交感神经系统，帮助身体进入放松状态。');
+                    onFeatureSelect('breathing-complete', t('healing.activities.breathing.completeMessage'));
                     return;
                 }
             }
@@ -102,18 +104,20 @@ const HealingFeatures = ({ onFeatureSelect, userName }) => {
     // 选择情绪
     const handleMoodSelect = (mood) => {
         setSelectedMood(mood);
-        onFeatureSelect('mood', `${userName}，我看到你选择了"${mood.label}"这个情绪。${mood.message}`);
+        const moodLabel = t(`healing.moods.${mood.key}.label`);
+        const moodMessage = t(`healing.moods.${mood.key}.message`);
+        onFeatureSelect('mood', `${userName}，我看到你选择了"${moodLabel}"这个情绪。${moodMessage}`);
     };
 
     // 获取呼吸指导文本
     const getBreathingText = () => {
         switch (breathingPhase) {
             case 'inhale':
-                return `吸气... (${4 - Math.floor((Date.now() % 4000) / 1000)})`;
+                return `${t('healing.activities.breathing.phases.inhale')} (${4 - Math.floor((Date.now() % 4000) / 1000)})`;
             case 'hold':
-                return `屏住呼吸... (${7 - Math.floor((Date.now() % 7000) / 1000)})`;
+                return `${t('healing.activities.breathing.phases.hold')} (${7 - Math.floor((Date.now() % 7000) / 1000)})`;
             case 'exhale':
-                return `呼气... (${8 - Math.floor((Date.now() % 8000) / 1000)})`;
+                return `${t('healing.activities.breathing.phases.exhale')} (${8 - Math.floor((Date.now() % 8000) / 1000)})`;
             default:
                 return '';
         }
@@ -130,14 +134,14 @@ const HealingFeatures = ({ onFeatureSelect, userName }) => {
                             <div className={`breathing-circle ${breathingPhase}`}>
                                 <div className="breathing-inner">
                                     <span className="breathing-text">{getBreathingText()}</span>
-                                    <div className="breathing-count">第 {breathingCount + 1}/4 轮</div>
+                                    <div className="breathing-count">{t('healing.activities.breathing.round', { current: breathingCount + 1, total: 4 })}</div>
                                 </div>
                             </div>
                             <button
                                 className="stop-breathing"
                                 onClick={() => setBreathingActive(false)}
                             >
-                                停止练习
+                                {t('healing.activities.breathing.stop')}
                             </button>
                         </div>
                     </div>
@@ -148,9 +152,9 @@ const HealingFeatures = ({ onFeatureSelect, userName }) => {
                     <div className="section-header">
                         <h3 className="section-title">
                             <span className="section-icon">🌟</span>
-                            治愈活动
+                            {t('healing.title')}
                         </h3>
-                        <p className="section-subtitle">选择一个活动来改善你的心理状态</p>
+                        <p className="section-subtitle">{t('healing.subtitle')}</p>
                     </div>
                     
                     <div className="activities-grid">
@@ -181,16 +185,16 @@ const HealingFeatures = ({ onFeatureSelect, userName }) => {
                     <div className="section-header">
                         <h3 className="section-title">
                             <span className="section-icon">💡</span>
-                            今日心理健康提醒
+                            {t('healing.dailyTip.title')}
                         </h3>
                     </div>
                     
                     <div className="daily-tip">
                         <div className="tip-content">
                             <p className="tip-text">
-                                "每一个小小的进步都值得庆祝。你不需要完美，只需要真实地做自己。"
+                                {t('healing.dailyTip.content')}
                             </p>
-                            <div className="tip-author">— 心理健康小贴士</div>
+                            <div className="tip-author">{t('healing.dailyTip.author')}</div>
                         </div>
                     </div>
                 </div>
@@ -200,20 +204,20 @@ const HealingFeatures = ({ onFeatureSelect, userName }) => {
                     <div className="section-header">
                         <h3 className="section-title">
                             <span className="section-icon">🆘</span>
-                            需要紧急支持？
+                            {t('healing.emergency.title')}
                         </h3>
                     </div>
                     
                     <div className="emergency-content">
                         <p className="emergency-text">
-                            如果你正在经历严重的心理健康危机，请立即寻求专业帮助。
+                            {t('healing.emergency.description')}
                         </p>
                         <div className="emergency-contacts">
                             <div className="contact-item">
-                                <strong>心理危机热线：</strong> 400-161-9995
+                                <strong>{t('healing.emergency.hotline')}</strong>
                             </div>
                             <div className="contact-item">
-                                <strong>24小时心理援助：</strong> 400-161-9995
+                                <strong>{t('healing.emergency.support')}</strong>
                             </div>
                         </div>
                     </div>
