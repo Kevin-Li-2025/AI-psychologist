@@ -1,0 +1,16 @@
+{
+  "name": "1a572321-8942-4515-837d-e4fd9997831c",
+  "version": "1.0.0",
+  "description": "LocalCursor generated Node.js project",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "jest": "^29.0.0"
+  }
+}

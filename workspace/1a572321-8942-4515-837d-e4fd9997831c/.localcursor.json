@@ -1,0 +1,8 @@
+{
+  "id": "1a572321-8942-4515-837d-e4fd9997831c",
+  "name": "Test Project",
+  "description": "A test project",
+  "techStack": "nodejs",
+  "created": "2025-09-07T08:59:00.331Z",
+  "template": "basic"
+}

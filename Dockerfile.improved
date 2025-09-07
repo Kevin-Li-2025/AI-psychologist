@@ -1,0 +1,65 @@
+# 多阶段构建的Dockerfile
+# 第一阶段：构建前端
+FROM node:18-alpine AS frontend-builder
+
+WORKDIR /app/frontend
+
+# 复制前端package文件
+COPY frontend/package*.json ./
+
+# 安装前端依赖
+RUN npm ci --only=production
+
+# 复制前端源码
+COPY frontend/ ./
+
+# 构建前端
+RUN npm run build
+
+# 第二阶段：构建后端
+FROM node:18-alpine AS backend-builder
+
+WORKDIR /app
+
+# 复制后端package文件
+COPY package*.json ./
+
+# 安装后端依赖
+RUN npm ci --only=production
+
+# 第三阶段：运行时环境
+FROM node:18-alpine AS runtime
+
+# 创建非root用户
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S therapy -u 1001
+
+# 设置工作目录
+WORKDIR /app
+
+# 复制后端依赖
+COPY --from=backend-builder /app/node_modules ./node_modules
+
+# 复制后端源码
+COPY server.js ./
+COPY server/ ./server/
+COPY package*.json ./
+
+# 复制构建好的前端
+COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
+
+# 创建日志目录
+RUN mkdir -p logs && chown -R therapy:nodejs logs
+
+# 切换到非root用户
+USER therapy
+
+# 暴露端口
+EXPOSE 3001
+
+# 健康检查
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3001/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
+
+# 启动命令
+CMD ["node", "server.js"]

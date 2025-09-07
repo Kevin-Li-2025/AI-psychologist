@@ -1,0 +1,439 @@
+/* 情绪可视化组件样式 */
+.emotional-visualization {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 情绪画布容器 */
+.emotion-canvas-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.emotion-canvas {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* SVG 动画 */
+.emotion-aura {
+    animation: auraBreath 3s ease-in-out infinite;
+}
+
+@keyframes auraBreath {
+    0%, 100% {
+        stroke-width: 2;
+        opacity: 0.5;
+    }
+    50% {
+        stroke-width: 4;
+        opacity: 0.8;
+    }
+}
+
+.emotion-wave {
+    animation: waveFlow 2s ease-in-out infinite;
+}
+
+@keyframes waveFlow {
+    0%, 100% {
+        stroke-width: 3;
+    }
+    50% {
+        stroke-width: 5;
+    }
+}
+
+.emotion-center {
+    animation: centerPulse 2s ease-in-out infinite;
+}
+
+@keyframes centerPulse {
+    0%, 100% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.intensity-ring {
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+/* 情绪标签 */
+.emotion-label {
+    text-align: center;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.emotion-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    text-transform: capitalize;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.emotion-intensity {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+/* 情绪历史 */
+.emotion-history {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.history-title::before {
+    content: "📈";
+    font-size: 16px;
+}
+
+.emotion-timeline {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 8px 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.emotion-timeline::-webkit-scrollbar {
+    height: 4px;
+}
+
+.emotion-timeline::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.emotion-timeline::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.emotion-point {
+    position: relative;
+    width: var(--emotion-size);
+    height: var(--emotion-size);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.point-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--emotion-color);
+    opacity: 0.3;
+    filter: blur(4px);
+    transform: scale(1.5);
+}
+
+.point-core {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background: var(--emotion-color);
+    box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    z-index: 1;
+}
+
+.emotion-point:hover {
+    transform: scale(1.2);
+}
+
+.emotion-point.active {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 8px var(--emotion-color));
+}
+
+.emotion-point.active .point-glow {
+    opacity: 0.6;
+    animation: activeGlow 2s ease-in-out infinite;
+}
+
+@keyframes activeGlow {
+    0%, 100% {
+        transform: scale(1.5);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 0.8;
+    }
+}
+
+/* 情绪选择器 */
+.emotion-selector {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.selector-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.selector-title::before {
+    content: "🎭";
+    font-size: 16px;
+}
+
+.emotion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 12px;
+}
+
+.emotion-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--emotion-color), var(--emotion-secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+}
+
+.emotion-button:hover .button-glow {
+    opacity: 0.2;
+}
+
+.emotion-button.active .button-glow {
+    opacity: 0.3;
+}
+
+.emotion-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--emotion-color);
+}
+
+.emotion-button.active {
+    border-color: var(--emotion-color);
+    box-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.2),
+        0 0 20px var(--emotion-color);
+    color: rgba(255, 255, 255, 1);
+}
+
+.emotion-icon {
+    font-size: 20px;
+    z-index: 1;
+    position: relative;
+}
+
+.emotion-text {
+    z-index: 1;
+    position: relative;
+    text-transform: capitalize;
+}
+
+/* 情绪洞察 */
+.emotion-insights {
+    margin-top: 16px;
+}
+
+.insight-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: insightSlideIn 0.5s ease-out;
+}
+
+@keyframes insightSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.insight-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.insight-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .emotional-visualization {
+        padding: 16px;
+        gap: 20px;
+    }
+    
+    .emotion-canvas {
+        max-width: 250px;
+    }
+    
+    .emotion-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+    
+    .emotion-button {
+        padding: 10px 6px;
+        font-size: 11px;
+    }
+    
+    .emotion-icon {
+        font-size: 18px;
+    }
+    
+    .emotion-timeline {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .emotional-visualization {
+        padding: 12px;
+        gap: 16px;
+    }
+    
+    .emotion-canvas {
+        max-width: 200px;
+    }
+    
+    .emotion-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .insight-card {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    .emotional-visualization {
+        background: rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .emotion-label,
+    .emotion-history,
+    .emotion-selector {
+        background: rgba(0, 0, 0, 0.2);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* 无障碍支持 */
+@media (prefers-reduced-motion: reduce) {
+    .emotion-aura,
+    .emotion-wave,
+    .emotion-center,
+    .activeGlow {
+        animation: none;
+    }
+    
+    .emotion-button,
+    .emotion-point {
+        transition: none;
+    }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+    .emotional-visualization {
+        border-width: 2px;
+        border-color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .emotion-button {
+        border-width: 2px;
+    }
+    
+    .emotion-label,
+    .insight-card {
+        border-width: 2px;
+    }
+}

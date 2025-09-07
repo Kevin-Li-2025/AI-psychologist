@@ -1,0 +1,382 @@
+/* Error Boundary Styles */
+.error-boundary {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, 
+        #ff6b6b 0%, 
+        #ee5a52 25%, 
+        #d63447 50%, 
+        #c44569 75%, 
+        #f8b500 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 20px;
+}
+
+.error-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.error-background .gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(255, 107, 107, 0.4) 0%,
+        rgba(238, 90, 82, 0.3) 25%,
+        rgba(214, 52, 71, 0.4) 50%,
+        rgba(196, 69, 105, 0.3) 75%,
+        rgba(248, 181, 0, 0.4) 100%);
+    animation: errorGradientShift 6s ease-in-out infinite;
+}
+
+@keyframes errorGradientShift {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.error-background .floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.2), 
+        rgba(255, 107, 107, 0.3));
+    backdrop-filter: blur(20px);
+    animation: errorFloat 8s ease-in-out infinite;
+}
+
+.error-background .orb-1 {
+    width: 150px;
+    height: 150px;
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.error-background .orb-2 {
+    width: 100px;
+    height: 100px;
+    top: 60%;
+    right: 20%;
+    animation-delay: 3s;
+}
+
+@keyframes errorFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-15px) rotate(120deg);
+    }
+    66% {
+        transform: translateY(8px) rotate(240deg);
+    }
+}
+
+.error-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    animation: errorSlideIn 0.8s ease-out;
+}
+
+@keyframes errorSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.error-glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 
+        0 16px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.error-icon {
+    margin-bottom: 24px;
+}
+
+.error-icon .icon-glow {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b6b, #d63447);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 
+        0 0 30px rgba(255, 107, 107, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    animation: errorPulse 2s ease-in-out infinite;
+}
+
+@keyframes errorPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 30px rgba(255, 107, 107, 0.6),
+            inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 
+            0 0 40px rgba(255, 107, 107, 0.9),
+            inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    }
+}
+
+.error-icon span {
+    font-size: 36px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.error-text {
+    margin-bottom: 32px;
+}
+
+.error-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0 0 12px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.error-subtitle {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.error-details {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.error-technical {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-technical summary {
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    font-weight: 500;
+    padding: 4px 0;
+}
+
+.error-technical summary:hover {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.error-info {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-info p {
+    margin: 8px 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.error-stack {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.error-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.error-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.error-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+.error-button.primary {
+    background: linear-gradient(135deg, #4caf50, #45a049);
+    color: white;
+    box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+}
+
+.error-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.error-button.secondary {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.error-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.error-support {
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 24px;
+}
+
+.support-message {
+    margin-bottom: 20px;
+}
+
+.support-message p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.support-message strong {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.support-message ul {
+    margin: 12px 0;
+    padding-left: 20px;
+}
+
+.support-message li {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.emergency-notice {
+    background: rgba(255, 193, 7, 0.2);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.notice-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.notice-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.notice-text strong {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .error-boundary {
+        padding: 15px;
+    }
+    
+    .error-glass {
+        padding: 24px;
+        border-radius: 20px;
+    }
+    
+    .error-title {
+        font-size: 24px;
+    }
+    
+    .error-subtitle {
+        font-size: 15px;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .error-button {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .emergency-notice {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-glass {
+        padding: 20px;
+    }
+    
+    .error-title {
+        font-size: 20px;
+    }
+    
+    .error-icon .icon-glow {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .error-icon span {
+        font-size: 28px;
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "hunyuan-lite-example",
+  "version": "1.0.0",
+  "description": "Node.js example for Hunyuan Lite API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test-api": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "compression": "^1.7.4",
+    "fs-extra": "^11.2.0",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.20.1"
+  },
+  "author": "",
+  "license": "MIT"
+}

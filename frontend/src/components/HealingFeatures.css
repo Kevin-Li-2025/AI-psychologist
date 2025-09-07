@@ -1,0 +1,524 @@
+/* 高级玻璃质感治愈功能组件 */
+.healing-features {
+    padding: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.features-glass {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.features-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.03) 100%
+    );
+    pointer-events: none;
+    animation: features-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes features-shimmer {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* 功能区块 */
+.feature-section {
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.feature-section:last-child {
+    margin-bottom: 0;
+}
+
+/* 区块标题 */
+.section-header {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: -0.3px;
+}
+
+.section-icon {
+    font-size: 24px;
+    opacity: 0.9;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+/* 呼吸练习指示器 */
+.breathing-exercise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.breathing-container {
+    text-align: center;
+    color: white;
+}
+
+.breathing-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, 
+        rgba(127, 176, 105, 0.3) 0%, 
+        rgba(127, 176, 105, 0.1) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+.breathing-circle.inhale {
+    animation: breatheIn 4s ease-in-out;
+}
+
+.breathing-circle.hold {
+    animation: breatheHold 7s ease-in-out;
+}
+
+.breathing-circle.exhale {
+    animation: breatheOut 8s ease-in-out;
+}
+
+@keyframes breatheIn {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes breatheHold {
+    0%, 100% { transform: scale(1.2); }
+}
+
+@keyframes breatheOut {
+    0% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.breathing-inner {
+    text-align: center;
+}
+
+.breathing-text {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.breathing-count {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.stop-breathing {
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.stop-breathing:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* 活动网格 */
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* 活动按钮 */
+.activity-button {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.2) 0%, 
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.activity-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent
+    );
+    transition: left 0.6s;
+}
+
+.activity-button:hover::before {
+    left: 100%;
+}
+
+.activity-button:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.25) 0%, 
+        rgba(255, 255, 255, 0.15) 100%
+    );
+    transform: translateY(-3px);
+    box-shadow: 
+        0 6px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.activity-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.activity-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    opacity: 0.9;
+}
+
+.activity-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.activity-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: white;
+    letter-spacing: 0.2px;
+}
+
+.activity-description {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.activity-arrow {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.activity-button:hover .activity-arrow {
+    color: white;
+    transform: translateX(4px);
+}
+
+/* 每日提醒 */
+.daily-tip {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.daily-tip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        transparent 70%
+    );
+    animation: tip-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes tip-shimmer {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.tip-content {
+    position: relative;
+    z-index: 2;
+}
+
+.tip-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: white;
+    margin: 0 0 12px 0;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.2px;
+}
+
+.tip-author {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* 紧急支持区域 */
+.emergency-section {
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    background: linear-gradient(135deg, 
+        rgba(255, 107, 107, 0.15) 0%, 
+        rgba(255, 107, 107, 0.08) 100%
+    );
+}
+
+.emergency-section .section-title {
+    color: #ffcccb;
+}
+
+.emergency-content {
+    text-align: center;
+}
+
+.emergency-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.emergency-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 13px;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.contact-item strong {
+    font-weight: 700;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .healing-features {
+        padding: 20px 16px;
+    }
+    
+    .features-glass {
+        padding: 24px 20px;
+        border-radius: 20px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .activity-button {
+        padding: 16px;
+        gap: 12px;
+    }
+    
+    .activity-icon {
+        font-size: 28px;
+    }
+    
+    .activity-title {
+        font-size: 15px;
+    }
+    
+    .activity-description {
+        font-size: 12px;
+    }
+    
+    .breathing-circle {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .breathing-text {
+        font-size: 16px;
+    }
+    
+    .daily-tip {
+        padding: 20px;
+    }
+    
+    .tip-text {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .healing-features {
+        padding: 16px 12px;
+    }
+    
+    .features-glass {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+    
+    .feature-section {
+        margin-bottom: 32px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+    }
+    
+    .section-icon {
+        font-size: 20px;
+    }
+    
+    .activity-button {
+        padding: 14px;
+        border-radius: 12px;
+    }
+    
+    .activity-icon {
+        font-size: 24px;
+    }
+    
+    .breathing-circle {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .emergency-contacts {
+        gap: 10px;
+    }
+    
+    .contact-item {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 焦点样式 */
+.activity-button:focus,
+.stop-breathing:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* 性能优化 */
+.healing-features * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

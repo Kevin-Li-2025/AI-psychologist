@@ -1,0 +1,161 @@
+.chat-input-wrapper {
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 1rem;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+.chat-input-form {
+    max-width: 100%;
+}
+
+.input-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    transition: border-color 0.2s ease;
+}
+
+.input-container:focus-within {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.chat-textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    resize: none;
+    background: transparent;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #111827;
+    min-height: 1.5rem;
+    max-height: 8rem;
+    overflow-y: auto;
+    font-family: inherit;
+}
+
+.chat-textarea::placeholder {
+    color: #6b7280;
+}
+
+.chat-textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.send-button {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.send-button:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.send-button:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.send-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.send-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.loading-spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.input-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.input-hint {
+    color: #6b7280;
+}
+
+.input-status {
+    color: #10b981;
+    font-weight: 500;
+}
+
+.input-status.sending {
+    color: #f59e0b;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .chat-input-wrapper {
+        padding: 0.75rem;
+    }
+
+    .input-container {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .chat-textarea {
+        font-size: 1rem;
+    }
+
+    .send-button {
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+
+    .send-icon {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .loading-spinner {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .input-footer {
+        flex-direction: column;
+        gap: 0.25rem;
+        align-items: flex-start;
+    }
+}
