@@ -6,14 +6,14 @@ An intelligent psychological therapy assistant powered by Tencent's Hunyuan Larg
 
 ### Bilingual Support
 <div align="center">
-  <img src="images/chinese_interface.svg" alt="Chinese Interface" width="400"/>
-  <img src="images/english_interface.svg" alt="English Interface" width="400"/>
+  <img src="images/chinese_interface.png" alt="Chinese Interface" width="400"/>
+  <img src="images/english_interface.png" alt="English Interface" width="400"/>
   <p><em>Full bilingual support - Chinese and English interfaces</em></p>
 </div>
 
 ### Welcome Experience
 <div align="center">
-  <img src="images/welcome_screen.svg" alt="Welcome Screen" width="500"/>
+  <img src="images/welcome_screen.png" alt="Welcome Screen" width="500"/>
   <p><em>Personalized onboarding with avatar selection and therapist style preferences</em></p>
 </div>
 
@@ -24,6 +24,7 @@ An intelligent psychological therapy assistant powered by Tencent's Hunyuan Larg
 - **Personalized Therapy Styles**: Four distinct approaches - Gentle & Caring, Professional & Rigorous, Positive & Encouraging, Wise & Experienced
 - **Emotional Intelligence**: Real-time emotion detection and analysis
 - **Persistent Memory System**: Remembers every conversation to build long-term therapeutic relationships
+- **RAG (Retrieval-Augmented Generation)**: Enhances AI responses with contextual memory and emotion analysis
 
 ### 🎨 Advanced Glassmorphism Design
 - **Transparent Green Theme**: Soothing gradient backgrounds for relaxation
@@ -59,16 +60,18 @@ An intelligent psychological therapy assistant powered by Tencent's Hunyuan Larg
 - **i18n**: Internationalization support
 
 ### Backend
-- **Node.js + Express**: High-performance server
-- **Tencent Hunyuan LLM**: Professional AI conversation capabilities
-- **Persistent Memory System**: Local file storage
-- **RAG Enhancement**: Retrieval-Augmented Generation
+- **Node.js + Express**: High-performance server with RESTful API architecture
+- **Tencent Hunyuan LLM**: Advanced large language model for natural, empathetic conversations
+- **Persistent Memory System**: Multi-layered memory storage with episodic, semantic, and emotional memory types
+- **RAG Enhancement**: Intelligent context retrieval and response augmentation for personalized therapy
 
 ### Core Features
-- **Emotion Analysis Engine**: Intelligent emotion recognition
-- **Personality System**: AI humanization experience
-- **Healing Activities**: Breathing exercises, mindfulness meditation
-- **Crisis Detection**: Automatic risk signal identification
+- **Emotion Analysis Engine**: Advanced sentiment analysis with 9 emotion types, intensity scoring, and pattern recognition
+- **Personality System**: Dynamic AI personality with Big Five traits and therapeutic style adaptation
+- **Healing Activities**: Interactive breathing exercises (4-7-8 technique), 5-minute mindfulness meditation, and gratitude journaling
+- **Crisis Detection**: Real-time crisis signal monitoring with risk level assessment and emergency response protocols
+- **Memory Consolidation**: Intelligent memory management with importance scoring and automatic cleanup
+- **Context Preservation**: Multi-language conversation context maintenance across sessions
 
 ## 📦 Quick Start
 
@@ -183,10 +186,20 @@ AI-psychologist/
 ## 🎯 Core Features Deep Dive
 
 ### Persistent Memory System
-- **Episodic Memory**: Records specific conversation events
-- **Semantic Memory**: Stores concepts and knowledge
-- **Emotional Memory**: Preserves emotional experiences
-- **Relationship Memory**: Tracks therapeutic relationship development
+- **Episodic Memory**: Records specific conversation events with timestamps, emotional context, and therapeutic insights
+- **Semantic Memory**: Stores learned concepts, coping strategies, and therapeutic knowledge with confidence scores
+- **Emotional Memory**: Preserves emotional experiences, triggers, and resolution patterns for personalized therapy
+- **Relationship Memory**: Tracks therapeutic alliance development, trust levels, and milestone achievements
+- **Procedural Memory**: Stores learned coping mechanisms and behavioral patterns
+- **Autobiographical Memory**: Maintains user's personal history and significant life events
+
+### RAG (Retrieval-Augmented Generation) System
+- **Contextual Memory Retrieval**: Dynamically retrieves relevant conversation history and emotional patterns
+- **Emotion Analysis Engine**: Advanced sentiment analysis with intensity scoring and pattern recognition
+- **Therapeutic Context Enhancement**: Augments AI responses with personalized therapeutic insights
+- **Real-time Crisis Detection**: Automatic identification of crisis signals and risk assessment
+- **Multi-language Context Preservation**: Maintains conversational context across language switches
+- **Adaptive Response Generation**: Tailors therapeutic responses based on user's emotional state and history
 
 ### AI Personality System
 - **Real Name**: Dr. Sophie (苏心怡)
@@ -205,6 +218,51 @@ AI-psychologist/
 - **Context Preservation**: Maintains context across language switches
 - **Cultural Sensitivity**: Culturally appropriate therapeutic approaches
 - **Professional Terminology**: Accurate psychological terms in both languages
+
+### Technical Implementation Details
+
+#### RAG (Retrieval-Augmented Generation) Architecture
+The RAG system enhances therapeutic conversations through intelligent context retrieval:
+
+**Emotion Analysis Pipeline:**
+- Multi-language emotion keyword dictionaries (Chinese & English)
+- Intensity scoring algorithms with contextual modifiers
+- Pattern recognition for emotional trajectories
+- Crisis signal detection with risk assessment
+
+**Context Retrieval Engine:**
+- Semantic similarity matching for relevant memory retrieval
+- Time-weighted relevance scoring (recent memories prioritized)
+- Emotional context preservation across sessions
+- Multi-modal memory integration (text, emotion, therapy context)
+
+**Response Augmentation:**
+- Dynamic prompt engineering based on user emotional state
+- Therapeutic technique selection based on historical effectiveness
+- Cultural context adaptation for Chinese/English responses
+- Crisis intervention protocol activation
+
+#### Persistent Memory System Architecture
+Multi-layered memory storage with intelligent consolidation:
+
+**Memory Types:**
+- **Episodic Memory**: Conversation events with timestamps, emotional context, and therapeutic insights
+- **Semantic Memory**: Learned concepts with confidence scores and associations
+- **Emotional Memory**: Emotion patterns, triggers, and resolution strategies
+- **Procedural Memory**: Coping mechanisms and behavioral adaptations
+- **Relationship Memory**: Therapeutic alliance metrics and milestone tracking
+
+**Memory Management:**
+- Automatic consolidation based on importance scoring
+- Time-decay algorithms for memory relevance
+- Periodic cleanup of outdated or low-importance memories
+- Cross-referencing between memory types for comprehensive context
+
+**Data Persistence:**
+- JSON-based storage with atomic write operations
+- Memory caching for performance optimization
+- Backup and recovery mechanisms
+- Privacy-compliant data handling with local storage
 
 ## 🔒 Security Features
 
