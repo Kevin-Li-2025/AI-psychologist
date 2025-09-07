@@ -6,15 +6,27 @@ An intelligent psychological therapy assistant powered by Tencent's Hunyuan Larg
 
 ### Bilingual Support
 <div align="center">
-  <img src="images/chinese_interface.png" alt="Chinese Interface" width="400"/>
-  <img src="images/english_interface.png" alt="English Interface" width="400"/>
-  <p><em>Full bilingual support - Chinese and English interfaces</em></p>
+  <img src="images/ChineseInterface.jpg" alt="Chinese Interface" width="600"/>
+  <img src="images/EnglishInterface.jpg" alt="English Interface" width="600"/>
+</div>
+<div align="center">
+  <p><strong>🌏 中文界面 (Chinese Interface)</strong></p>
+  <p>支持完整的中文交互体验，包括文化适应性心理咨询、专业心理学术语翻译、情感表达本地化</p>
+  <p><strong>🌍 英文界面 (English Interface)</strong></p>
+  <p>提供原生英文支持，保持专业心理咨询标准，同时支持中英无缝切换</p>
+  <p><em>🎯 双语智能切换：系统自动检测用户语言偏好，提供无缝的多语言体验</em></p>
 </div>
 
 ### Welcome Experience
 <div align="center">
-  <img src="images/welcome_screen.png" alt="Welcome Screen" width="500"/>
-  <p><em>Personalized onboarding with avatar selection and therapist style preferences</em></p>
+  <img src="images/WelcomePage.jpg" alt="Welcome Screen" width="700"/>
+</div>
+<div align="center">
+  <p><strong>🎨 个性化入驻体验 (Personalized Onboarding)</strong></p>
+  <p>🌟 <strong>24个精美头像选择</strong>：涵盖表情符号、卡通人物、动物形象，满足不同用户的个性化需求</p>
+  <p>👤 <strong>治疗师风格定制</strong>：四种专业治疗风格可选 - 温柔关怀、专业严谨、积极鼓励、智慧经验</p>
+  <p>🎯 <strong>智能用户画像</strong>：基于用户偏好自动推荐最适合的治疗师风格和头像</p>
+  <p><em>💚 温暖的开始：从第一刻起就营造温馨、专业的心理咨询氛围</em></p>
 </div>
 
 ## ✨ Key Features
